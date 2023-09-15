@@ -12,15 +12,22 @@ let table = document.getElementById("table1");
 
 
 //useravatar
-let tableDataAvatr = document.createElement("td");
-let imgSRC = "#";
-const file = document.getElementById('input-image').files[0];
-        if(!file){
 
-        } else{
-            imgSRC = URL.createObjectURL(file);
-            console.log(imgSRC)
-        }
+
+const image_input = document.querySelector("#input-image");
+let imgSRC = " ";
+         
+image_input.addEventListener("change", function(){
+    if(!image_input.value){
+        console.log("hurray");
+    } else{
+        console.log("Not hurray");
+        const file = document.getElementById('input-image').files[0];
+        imgSRC = URL.createObjectURL(file);
+        
+    }
+})
+   
 
         
         
@@ -44,7 +51,7 @@ button.addEventListener("click", function(){
     let tableDataUsername = document.createElement("td");
     let tableDataEmail = document.createElement("td");
     let tableDataIsAdmin = document.createElement("td");
-    
+    let tableDataAvatr = document.createElement("td");
 
     //Check if the user is an admin
     if(document.getElementById('input-admin').checked){
