@@ -12,19 +12,27 @@ let table = document.getElementById("table1");
 
 
 //useravatar
-let imageSite = document.getElementById("uploaded-image");
+let tableDataAvatr = document.createElement("td");
+let imgSRC = "#";
+const file = document.getElementById('input-image').files[0];
+        if(!file){
 
+        } else{
+            imgSRC = URL.createObjectURL(file);
+            console.log(imgSRC)
+        }
 
+        
+        
+   
 
+    
 
 //number of rows in table starts at three since there is its already populated
 let num = 3;
 
 button.addEventListener("click", function(){
-    const file = document.getElementById('input-image').files[0];
-    let imgSRC = "";
-    if(!file) return;
-    imgSRC = URL.createObjectURL(file);
+    
 
     
    
@@ -36,7 +44,7 @@ button.addEventListener("click", function(){
     let tableDataUsername = document.createElement("td");
     let tableDataEmail = document.createElement("td");
     let tableDataIsAdmin = document.createElement("td");
-    let tableDataAvatr = document.createElement("td");
+    
 
     //Check if the user is an admin
     if(document.getElementById('input-admin').checked){
@@ -60,14 +68,12 @@ button.addEventListener("click", function(){
             break;
             
         } 
-        
+
         
     }
     
     if(!userAlreadyExists){
-
-        tableDataAvatr.innerHTML='<img id="uploaded-image" src="'+imgSRC+'" alt="Uploaded Image" width="64" height="64">';
-
+        
         tableDataUsername.innerText = username.value;
         tableDataEmail.innerText = userEmail.value;
         if(document.getElementById('input-admin').checked){
@@ -82,7 +88,9 @@ button.addEventListener("click", function(){
         tableRow.appendChild(tableDataUsername);
         tableRow.appendChild(tableDataEmail);
         tableRow.appendChild(tableDataIsAdmin);
+        tableDataAvatr.innerHTML='<img id="uploaded-image" src="'+imgSRC+'" alt="Uploaded Image" width="64" height="64">';
         tableRow.appendChild(tableDataAvatr);
+   
         table.append(tableRow);
 
 
